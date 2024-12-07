@@ -14,7 +14,7 @@ Download and add `javascript` anywhere after `<link>` in html <br>
 
 ## Usage
 
-`test.css`
+`color.css`
 ```css
 :root
 {
@@ -25,18 +25,18 @@ Download and add `javascript` anywhere after `<link>` in html <br>
 }
 ```
 
-`copied` `css--var2class.js` to `var2class.js`
+`downloaded and added javascript` 
 
 `index.html`
 ```html
 <!-- GETTING STARTED -->
-<link color rel="stylesheet" href="test.css">
-<script src="var2class.js"></script>
+<link color rel="stylesheet" href="color.css">
+<script src="css--var2class.js"></script>
 
 <!-- APPLY -->
-<div class="red">I am red</div>
-<div class="greeb">I am green</div>
-<div class="blue">I am blue</div>
-<div class="yellow">I am yellow</div>
+<div class="red">     I am red     </div>
+<div class="green">   I am green   </div>
+<div class="blue">    I am blue    </div>
+<div class="yellow">  I am yellow  </div>
 
 ```
