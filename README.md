@@ -28,6 +28,7 @@ again- -and- -again- -and- -again- -and- -again!
 {
     --rounded: 100px;
     --curved: 5px;
+    --borderRadius: var(--curved); /* var(), reusable at :root level after declaring */
 }
 ```
 `html`
