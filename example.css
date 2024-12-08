@@ -1,0 +1,19 @@
+
+.background-color
+{
+    --red: #EE3C4F;
+    --green: lightgreen;
+    --blue: blue;
+    --yellow: rgb(255, 255, 0);
+}
+
+.border-radius
+{
+    --curved: 5px;
+    --rounded: 100px;
+}
+
+.padding
+{
+    --padding: var(--curved); /* 5px */
+}
