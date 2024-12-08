@@ -28,7 +28,7 @@ again- -and- -again- -and- -again- -and- -again!
 {
     --rounded: 100px;
     --curved: 5px;
-    --borderRadius: var(--curved); /* var(), reusable in css */
+    --borderRadius: var(--curved);
 }
 ```
 `html`
