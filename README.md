@@ -1,5 +1,11 @@
 # CSS (--var) to (.class)
 
+Generate `classes` from css `Variables`! <br>
+Client Side Classes Generation, reduces css file size <br><br>
+
+no need to type `class`, `background-color` <br>
+`again--and--again--and--again--and--again!`
+
 ## Usage
 `css`
 ```css
