@@ -28,7 +28,7 @@ again- -and- -again- -and- -again- -and- -again!
 {
     --rounded: 100px;
     --curved: 5px;
-    --borderRadius: var(--curved); /* var(), reusable at :root level after declaring */
+    --borderRadius: var(--curved); /* var(), reusable in css */
 }
 ```
 `html`
@@ -37,12 +37,35 @@ again- -and- -again- -and- -again- -and- -again!
 <div class="curved blue"> I am curved blue </div>
 ```
 
-## Structure
+
+## How it works?
+
+### Structure
 
 ```css
 .[property]
 {
     --[class_name]: [value];
+}
+```
+### Conversion
+#### from
+```css
+.background-color
+{
+    --myred: rgb(255, 0, 0);
+}
+```
+#### to
+```css
+:root
+{
+    --myred: rgb(255, 0 0);
+}
+
+.myred
+{
+    background-color : var(--red);
 }
 ```
 
