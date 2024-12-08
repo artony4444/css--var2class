@@ -14,13 +14,12 @@ again- -and- -again- -and- -again- -and- -again!
 {
     --red: red;
     --blue: #4169E1;
-    --yellow: rgb(255, 255, 0);
 }
 ```
 `html`
 ```html
-<div class="blue">   I am blue   </div>
-<div class="yellow"> I am yellow </div>
+<div class="red">  I am red  </div>
+<div class="blue"> I am blue </div>
 ```
 `css`
 ```css
