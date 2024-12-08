@@ -1,14 +1,5 @@
 # CSS (--var) to (.class)
 
-## Structure
-
-```css
-.[property]
-{
-    --[class_name]: [value];
-}
-```
-
 ## Usage
 `css`
 ```css
@@ -36,6 +27,15 @@
 ```html
 <div class="rounded red"> I am rounded red </div>
 <div class="curved blue"> I am curved blue </div>
+```
+
+## Structure
+
+```css
+.[property]
+{
+    --[class_name]: [value];
+}
 ```
 
 ## Getting Started
