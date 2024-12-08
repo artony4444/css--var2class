@@ -1,8 +1,8 @@
-// generate (.class) from (--var)
+// --- generate (.class) from (--var)
 
-let app_name = "color"      // identifier
-let property = "applyTo"    // "background-color" (default)
-
+let identifier = "color"
+let logs = 0
+let info = 1
 
 // ------------------------------------------------------------
 //
@@ -12,14 +12,96 @@ let property = "applyTo"    // "background-color" (default)
 // ------------------------------------------------------------
 
 
-document.querySelectorAll(`link[${app_name}]`).forEach(l => generateClasses(l))
+/* INFO -------------------------------- */
+
+
+let info_no_sheet = () => [
+    console.log(`add '${identifier}' inside <link ... >`),
+    console.log(`<link ${identifier} rel="stylesheet" href="{sheet_loaction}">`)
+]
+
+let info_no_rules = () => [
+console.log(`.css`),
+console.log(`
+.background-color
+{
+    --blue: blue;
+    --red: rgb(255, 0, 0);
+}
+
+.border-radius
+{
+    --curve: 10px;
+    --round: 100px;
+}
+`),
+
+console.log(`.html`),
+console.log(`
+<div class="round blue">
+    I am round blue
+</div>
+`),
+
+console.log(" "),
+console.log(`> how it works?`),
+console.log(`.[property_name]
+{
+    --[class_name]: [value];
+}`)];
+
+
+/* ------------------------------------- */
+
+
+let sheets = document.querySelectorAll(`link[${identifier}]`);
+
+info && !sheets.length ? info_no_sheet() : 0;
+
+sheets.forEach(l => generateClasses(l));
 
 function generateClasses(link)
 {
-    let param = link.getAttribute(property) || "background-color";
-    let sheet = null;
-    for(let s of document.styleSheets) { if(s.href == link.href) { sheet = s; break; } }
-    let root = null;
-    for(let r of sheet.cssRules || sheet.rules || []) { if(r.selectorText == ":root") { root = r; break; } }
-    for(let c of root.style || []) { sheet.insertRule(`.${c.slice(2)} { ${param} : var(${c}) }`, sheet.cssRules.length); }
+    let sheet = Array.from(document.styleSheets).find(s => s.href == link.href);
+    
+    let sheet_rules = sheet.cssRules || sheet.rules;
+    
+    let rules = Array.from(sheet_rules);
+    
+    /* log */  cprint(link, "before");
+    
+    /* info */ info && !rules.length ? info_no_rules() : 0;
+    
+    rules.forEach((r, i) => {
+        
+        let selector = r.selectorText;
+        let cssText = selector != ":root" ? r.cssText.replace(selector, ':root') : r.cssText;
+        let param = selector == ":root" ? "background-color" : selector.slice(1);
+        
+        sheet.deleteRule(0);
+        sheet.insertRule(cssText, rules.length - 1);
+        
+        for(let c of (r ? r.style : []))
+        {
+            sheet.insertRule(`.${c.slice(2)} { ${param} : var(${c}) }`, sheet_rules.length);
+        }
+    })
+    
+    /* log */ cprint(link, "after");
+}
+
+
+
+function cprint(link, display="css")
+{
+    if(!logs) return;
+    
+    console.log(display, ":")
+    
+    let sheet = Array.from(document.styleSheets).find(s => s.href == link.href)
+    let rules = Array.from(sheet.cssRules || sheet.rules);
+    let txt = ""
+    rules.forEach(r => txt += (r.cssText + "\n"))
+    
+    console.log(txt)
 }
