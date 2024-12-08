@@ -4,8 +4,7 @@ Generate `classes` from css `Variables`! <br>
 * Client Side Classes Generation
 * Reduce css File Size <br>
 
-no need to type `class`, `background-color` <br>
-again- -and- -again- -and- -again- -and- -again!
+no need to type `class`, `background-color` again- -and- -again- -and- -again- -and- -again!
 
 ## Usage
 `css`
@@ -63,7 +62,7 @@ again- -and- -again- -and- -again- -and- -again!
 
 .myred
 {
-    background-color : var(--red);
+    background-color : var(--myred);
 }
 ```
 
